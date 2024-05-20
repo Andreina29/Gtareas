@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestor de Tareas - Menú</title>
+    <link rel="stylesheet" href="Menu1.css">
+</head>
+
+<body>
+    <nav>
+        <ul>
+            <li><a href="#perfil" class="nav-link">Perfil</a></li>
+            <li><a href="#tareas" class="nav-link">Tareas</a></li>
+            <button id="logoubutton">Cerrar Sesion</button>
+        </ul>
+    </nav>
+
+    <div id="perfil" class="content-section">
+        <h2>Perfil</h2>
+        <img src="https://previews.123rf.com/images/jemastock/jemastock1705/jemastock170503278/77533483-imagen-de-silueta-de-color-mujer-de-cuerpo-medio-sin-rostro-de-dibujos-animados-con-ilustraci%C3%B3n-de.jpg" class="carnet-img">
+        <p>Nombres y Apellidos: Mara Andreina Sanchez Lliquin</p>
+        <p><label>Cédula:</label> 1670953675</p>
+        <p>Correo Electronico: marasanchez.es@outlook.com</p>
+        <label>Dirección: Dr. Luis Fernando Viveros y Febres Cordero</label>
+        <p><label>Teléfono:</label> (593)-654-897-863</p>
+    </div>
+
+    <div id="tareas" class="content-section">
+        <h2>Tareas</h2>
+        <button id="add-task-btn">Agregar Tarea</button>
+        <ul id="task-list"></ul>
+    </div>
+
+    
+
+    <!-- Modal para agregar/editar tarea -->
+    <div id="task-modal" class="modal hidden">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2 id="modal-title">Agregar Tarea</h2>
+            <label for="task-name">Nombre de la Tarea:</label>
+            <input type="text" id="task-name">
+            <label for="task-desc">Descripción de la Tarea:</label>
+            <textarea id="task-desc"></textarea>
+            <button id="save-task-btn">Guardar</button>
+        </div>
+    </div>
+
+    <script src="Menu1.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestor de Tareas</title>
+    <link rel="stylesheet" href="Gtareas2.css">
+</head>
+
+<body>
+    <div class="main">
+        <div class="container">
+            <h1>GESTOR DE TAREAS</h1>
+
+            <div class="login-form">
+                <h3>INICIAR SESION</h3>
+                <form id="loginForm">
+                    <label for="username">USUARIO:</label>
+                    <input type="text" id="username" name="username" required>
+                    <label for="password">CONTRASEÑA:</label>
+                    <input type="password" id="password" name="password" required>
+                    <button type="submit">Ingresar</button>
+                    <p class="register-link">¿No tienes una cuenta? <a href="#" id="show-registration-form">Regístrate aquí</a></p>
+                </form>
+            </div>
+
+            <div id="registration-form" class="hidden">
+                <div class="container">
+                    <h3>Registro</h3>
+                    <form>
+                        <div class="form-group">
+                            <label for="register-username">Nombre de Usuario:</label>
+                            <input type="text" id="register-username" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="register-email">Correo Electrónico:</label>
+                            <input type="email" id="register-email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="register-password">Contraseña:</label>
+                            <input type="password" id="register-password" required>
+                        </div>
+                        <button type="submit">Registrarse</button>
+                    </form>
+                    <p id="registration-error-message" class="error-message"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="Gtareas2.js"></script>
+</body>
+
+</html>

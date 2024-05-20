@@ -1,0 +1,108 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    background-image: url('https://www.wimi-teamwork.com/static/medias/logiciels-gestion-des-taches-1280x640-1-980x490.png');
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    border-radius: 2%;
+}
+.container{
+    border-radius: 2px;
+    height: auto;
+}
+header {
+    text-align: center;
+    color: #050505;
+    position: relative;
+    z-index: 1;
+}
+
+h1 {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+}
+
+#user-info {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+}
+
+.hidden {
+    display: none;
+}
+
+.hero {
+    background: rgba(255, 255, 255, 0.8);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+    max-width: 600px;
+    text-align: center;
+}
+
+.hero h2 {
+    margin-bottom: 20px;
+}
+
+.hero img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+.login-form {
+    text-align: left;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+label {
+    display: block;
+    font-weight: bold;
+}
+
+input[type="email"],
+input[type="password"],
+input[type="text"] {
+    margin-bottom: 10px;
+    width: 95% ; /* Considerando el padding */
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #f5d0d0;
+    box-sizing: border-box; /* Asegura que el ancho incluya el padding */
+}
+
+button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #eee;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+.register-link {
+    margin-top: 10px;
+}
+
+.register-link a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+.register-link a:hover {
+    text-decoration: underline;
+}
