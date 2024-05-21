@@ -19,7 +19,8 @@
 
     <div id="perfil" class="content-section">
         <h2>Perfil</h2>
-        <img src="https://previews.123rf.com/images/jemastock/jemastock1705/jemastock170503278/77533483-imagen-de-silueta-de-color-mujer-de-cuerpo-medio-sin-rostro-de-dibujos-animados-con-ilustraci%C3%B3n-de.jpg" class="carnet-img">
+        <img src="https://previews.123rf.com/images/jemastock/jemastock1705/jemastock170503278/77533483-imagen-de-silueta-de-color-mujer-de-cuerpo-medio-sin-rostro-de-dibujos-animados-con-ilustraci%C3%B3n-de.jpg"
+            class="carnet-img">
         <p>Nombres y Apellidos: Mara Andreina Sanchez Lliquin</p>
         <p><label>Cédula:</label> 1670953675</p>
         <p>Correo Electronico: marasanchez.es@outlook.com</p>
@@ -29,24 +30,40 @@
 
     <div id="tareas" class="content-section">
         <h2>Tareas</h2>
-        <button id="add-task-btn">Agregar Tarea</button>
+
         <ul id="task-list"></ul>
-    </div>
+        <div id="task-modal" class="modal hidden">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <h2 id="modal-title">Agregar Tarea</h2>
+                <label for="task-name">Nombre de la Tarea:</label>
+                <input type="text" id="task-name">
+                <label for="task-desc">Descripción de la Tarea:</label>
+                <textarea id="task-desc"></textarea>
+                <button id="save-task-btn">Guardar</button>
 
-    
-
-    <!-- Modal para agregar/editar tarea -->
-    <div id="task-modal" class="modal hidden">
-        <div class="modal-content">
-            <span class="close">&times;</span>
-            <h2 id="modal-title">Agregar Tarea</h2>
-            <label for="task-name">Nombre de la Tarea:</label>
-            <input type="text" id="task-name">
-            <label for="task-desc">Descripción de la Tarea:</label>
-            <textarea id="task-desc"></textarea>
-            <button id="save-task-btn">Guardar</button>
+                <div id="pagination" class="content-section">
+                    <button id="prev-page-btn">Anterior</button>
+                    <span id="page-info"></span>
+                    <button id="next-page-btn">Siguiente</button>
+                </div>
+                <div id="tareas" class="content-section">
+                    <h2>Tareas</h2>
+                    <button id="add-task-btn">Agregar Tarea</button>
+                    <ul id="task-list"></ul>
+                </div>
+            </div>
         </div>
+
+        
     </div>
+
+    <div id="task-modal" class="modal hidden">
+
+    </div>
+
+
+
 
     <script src="Menu1.js"></script>
 </body>
