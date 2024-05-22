@@ -35,39 +35,52 @@
 
         <ul id="task-list"></ul>
         <div id="task-modal" class="modal hidden">
-            <div class="modal-content">
-                <span class="close">&times;</span>
-                <h2 id="modal-title">Agregar Tarea 📝</h2>
-                <label for="task-name">Nombre de la Tarea:</label>
-                <input type="text" id="task-name">
-                <label for="task-desc">Descripción de la Tarea:</label>
-                <textarea id="task-desc"></textarea>
-                <button id="save-task-btn">Guardar</button>
-
-                <div id="pagination" class="content-section">
-                    <button id="prev-page-btn">Anterior</button>
-                    <span id="page-info"></span>
-                    <button id="next-page-btn">Siguiente</button>
+            <div class="boton-modal">
+                <label for="btn-modal">
+                    Agregar Tarea
+                </label>
+            </div>
+            <input type="checkbox" id="btn-modal">
+            <div class="container-modal">
+                <div class="content-modal">
+                    <span class="close">&times;</span>
+                    <h2 id="modal-title">Agregar Tarea 📝</h2>
+                    <label for="task-name">Nombre de la Tarea:</label>
+                    <input type="text" id="task-name">
+                    <label for="task-desc">Descripción de la Tarea:</label>
+                    <textarea id="task-desc"></textarea>
+                    <button id="save-task-btn">Guardar</button>
+                    <div class="btn-cerrar">
+                        <label for="btn-modal">cerrar</label>
+                    </div>
+                    <label for="btn-modal" class="cerrar-modal"></label>
                 </div>
+
+
                 <div id="tareas" class="content-section">
                     <h2>Tareas</h2>
                     <button id="add-task-btn">Agregar Tarea</button>
                     <ul id="task-list"></ul>
                 </div>
+
             </div>
+            <div id="pagination" class="content-section">
+                <button id="prev-page-btn">Anterior</button>
+                <span id="page-info"></span>
+                <button id="next-page-btn">Siguiente</button>
+            </div>
+
+
+
         </div>
 
 
 
-    </div>
-
-    
 
 
 
 
-
-    <script src="Menu1.js"></script>
+        <script src="Menu1.js"></script>
 </body>
 
 </html>
