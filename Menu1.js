@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const closeModalBtn = document.querySelector('.close');
     const logoutButton = document.getElementById('logoubutton');
     
-    const tasksPerPage = 8;
+    const tasksPerPage = 4;
     let currentPage = 1;
     let editingTask = null;
 
