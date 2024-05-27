@@ -1,28 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gestor de Tareas - Menú</title>
     <link rel="stylesheet" href="Menu1.css">
 </head>
+
 <body>
     <nav>
         <ul>
             <li><a href="#perfil" class="nav-link">Perfil</a></li>
             <li><a href="#tareas" class="nav-link">Tareas</a></li>
-            <button id="logoutButton">Cerrar Sesion</button>
+            <button id="logoutButton">Cerrar Sesión</button>
         </ul>
     </nav>
 
-    <header>
-        <h1>Gestor de Tareas</h1>
-        
-    </header>
+
+
 
     <div id="perfil" class="content-section">
         <h2>Perfil</h2>
-        <img src="https://previews.123rf.com/images/jemastock/jemastock1705/jemastock170503278/77533483-imagen-de-silueta-de-color-mujer-de-cuerpo-medio-sin-rostro-de-dibujos-animados-con-ilustraci%C3%B3n-de.jpg" class="carnet-img">
+        <img src="https://previews.123rf.com/images/jemastock/jemastock1705/jemastock170503278/77533483-imagen-de-silueta-de-color-mujer-de-cuerpo-medio-sin-rostro-de-dibujos-animados-con-ilustraci%C3%B3n-de.jpg"
+            class="carnet-img">
         <p>Nombres y Apellidos: Mara Andreina Sanchez Lliquin</p>
         <p><label>Cédula:</label> 1670953675</p>
         <p>Correo Electronico: marasanchez.es@outlook.com</p>
@@ -32,8 +33,10 @@
 
     <div id="tareas" class="content-section">
         <h2>Tareas 📖</h2>
-        <button id="add-task-btn">Agregar Tarea</button>
-        <table id="task-list" class="task-table">
+        <hr>
+        <ul id="task-list" class="task-list"></ul>
+        
+        <table class="task-table">
             <thead>
                 <tr>
                     <th>Nombre de la Tarea</th>
@@ -44,6 +47,35 @@
             </thead>
             <tbody></tbody>
         </table>
+
+        <div id="task-modal" class="modal hidden">
+            <div class="boton-modal">
+                <label for="btn-modal">
+                    <button id="add-task-btn">Agregar Tarea</button>
+                </label>
+            </div>
+            <input type="checkbox" id="btn-modal">
+            <div class="container-modal">
+                <div class="content-modal">
+                    <div class="modal-content">
+                        <span class="close">&times;</span>
+                        <h2 id="modal-title">Agregar Tarea 📝</h2>
+                        <label for="task-name">Nombre de la Tarea:</label>
+                        <input type="text" id="task-name">
+                        <label for="task-desc">Descripción de la Tarea:</label>
+                        <textarea id="task-desc"></textarea>
+                        <label for="task-due-date">Fecha de Entrega:</label>
+                        <input type="date" id="task-due-date">
+                        <button id="save-task-btn">Guardar</button>
+                        <div class="btn-cerrar">
+                            <label for="btn-modal">cerrar</label>
+                        </div>
+                        <label for="btn-modal" class="cerrar-modal"></label>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <div id="pagination" class="content-section">
             <button id="prev-page-btn">Anterior</button>
             <span id="page-info"></span>
@@ -51,20 +83,13 @@
         </div>
     </div>
 
-    <div id="task-modal" class="modal hidden">
-        <div class="modal-content">
-            <span class="close">&times;</span>
-            <h2 id="modal-title">Agregar Tarea 📝</h2>
-            <label for="task-name">Nombre de la Tarea:</label>
-            <input type="text" id="task-name">
-            <label for="task-desc">Descripción de la Tarea:</label>
-            <textarea id="task-desc"></textarea>
-            <label for="task-due-date">Fecha de Entrega:</label>
-            <input type="date" id="task-due-date">
-            <button id="save-task-btn">Guardar</button>
-        </div>
-    </div>
+
+
+
+    
+   
 
     <script src="Menu1.js"></script>
 </body>
+
 </html>
