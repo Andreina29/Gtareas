@@ -10,7 +10,7 @@ body {
 }
 
 nav {
-    background-color: #4b3535;
+    background-color: #eaf8df;
     overflow: hidden;
 }
 
@@ -28,7 +28,7 @@ nav ul li {
 
 nav ul li a {
     display: block;
-    color: white;
+    color: rgb(12, 12, 12);
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;
@@ -39,8 +39,8 @@ nav ul li a:hover {
 }
 
 #logoutButton {
-    background-color: #553535;
-    color: rgb(241, 235, 235);
+    background-color: #eaf8df;
+    color: rgb(37, 37, 37);
     border: none;
     padding: 14px 16px;
     cursor: pointer;
@@ -56,7 +56,7 @@ nav ul li a:hover {
     display: none;
     padding: 20px;
     margin: 20px;
-    background-color: rgba(255, 255, 255, 0.8);
+    background-color: rgba(255, 255, 255, 0.788);
     border-radius: 8px;
 }
 
@@ -85,8 +85,8 @@ nav ul li a:hover {
 }
 
 .task-table th {
-    background-color: #4b3535;
-    color: white;
+    background-color: #eaf8df;
+    color: rgb(43, 42, 42);
 }
 
 .task-list li {
@@ -149,7 +149,7 @@ nav ul li a:hover {
 .task-item {
     background-color: #faf4f4;
     padding: 20px;
-    border: 1px solid #f7e8e8;
+    border: 1px solid #131212;
     margin-bottom: 10px;
     border-radius: 30px;
 }
@@ -161,8 +161,8 @@ nav ul li a:hover {
 .task-item button {
     margin: 10px 40px;
     padding: 10px 40px;
-    background-color: #4b3535;
-    color: white;
+    background-color: #eaf8df;
+    color: rgb(36, 35, 35);
     border: none;
     cursor: pointer;
     border-radius: 10px;
@@ -194,7 +194,7 @@ button {
 #pagination button {
     margin: 0 10px;
     padding: 10px 40px;
-    background-color: #4b3535;
+    background-color: #eaf8df;
     color: white;
     border: none;
     cursor: pointer;
@@ -208,7 +208,7 @@ button {
 }
 
 #pagination button:hover:enabled {
-    background-color: #5f1d1d;
+    background-color: #eaf8df;
 }
 
 #pagination span {
