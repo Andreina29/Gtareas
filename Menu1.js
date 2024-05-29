@@ -15,7 +15,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const nextButton = document.getElementById('next-page-btn');
     const pageInfo = document.getElementById('page-info');
 
-    const tasksPerPage = 4;
+    const tasksPerPage = 8;
     let currentPage = 1;
     let editingTask = null;
 
