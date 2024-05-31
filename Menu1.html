@@ -9,87 +9,117 @@
 </head>
 
 <body>
+
     <nav>
+        <i id="menu-icon" class="fa-solid fa-bars"></i>
         <ul>
             <li><a href="#perfil" class="nav-link">Perfil</a></li>
             <li><a href="#tareas" class="nav-link">Tareas</a></li>
+            <li><a href="#ideas" class="nav-link">Ideas</a></li>
+            <li><a href="#agregar-imagen" class="nav-link">Agregar Imagen</a></li>
+           <li><a href="#calendario" class="nav-link"> Calendario</a></li>
             <button id="logoutButton">Cerrar Sesión</button>
         </ul>
     </nav>
 
+    <div class="content">
+        <div id="perfil" class="content-section">
+            <h2>Perfil</h2>
+            <img src="https://cdn-icons-png.freepik.com/256/14083/14083134.png?semt=ais_hybrid"
+                class="carnet-img">
+            <p>Nombres y Apellidos: Mara Andreina Sanchez Lliquin</p>
+            <p><label>Cédula:</label> 1670953675</p>
+            <p>Correo Electronico: marasanchez.es@outlook.com</p>
+            <p><label>Dirección:</label> Dr. Luis Fernando Viveros y Febres Cordero</p>
+            <p><label>Teléfono:</label> (593)-654-897-863</p>
+        </div>
 
+        <div id="tareas" class="content-section">
+            <h2>Tareas 📖</h2>
+            <hr>
+            <ul id="task-list" class="task-list"></ul>
 
+            <table class="task-table">
+                <thead>
+                    <tr>
+                        <th>Nombre de la Tarea</th>
+                        <th>Descripción de la Tarea</th>
+                        <th>Fecha de Entrega</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
 
-    <div id="perfil" class="content-section">
-        <h2>Perfil</h2>
-        <img src="https://previews.123rf.com/images/jemastock/jemastock1705/jemastock170503278/77533483-imagen-de-silueta-de-color-mujer-de-cuerpo-medio-sin-rostro-de-dibujos-animados-con-ilustraci%C3%B3n-de.jpg"
-            class="carnet-img">
-        <p>Nombres y Apellidos: Mara Andreina Sanchez Lliquin</p>
-        <p><label>Cédula:</label> 1670953675</p>
-        <p>Correo Electronico: marasanchez.es@outlook.com</p>
-        <p><label>Dirección:</label> Dr. Luis Fernando Viveros y Febres Cordero</p>
-        <p><label>Teléfono:</label> (593)-654-897-863</p>
-    </div>
-
-    <div id="tareas" class="content-section">
-        <h2>Tareas 📖</h2>
-        <hr>
-        <ul id="task-list" class="task-list"></ul>
-        
-        <table class="task-table">
-            <thead>
-                <tr>
-                    <th>Nombre de la Tarea</th>
-                    <th>Descripción de la Tarea</th>
-                    <th>Fecha de Entrega</th>
-                    <th>Acciones</th>
-                </tr>
-            </thead>
-            <tbody></tbody>
-        </table>
-
-        <div id="task-modal" class="modal hidden">
-            <div class="boton-modal">
-                <label for="btn-modal">
-                    <button id="add-task-btn">Agregar Tarea</button>
-                </label>
-            </div>
-            <input type="checkbox" id="btn-modal">
-            <div class="container-modal">
-                <div class="content-modal">
-                    <div class="modal-content">
-                        <span class="close">&times;</span>
-                        <h2 id="modal-title">Agregar Tarea 📝</h2>
-                        <label for="task-name">Nombre de la Tarea:</label>
-                        <input type="text" id="task-name">
-                        <label for="task-desc">Descripción de la Tarea:</label>
-                        <textarea id="task-desc"></textarea>
-                        <label for="task-due-date">Fecha de Entrega:</label>
-                        <input type="date" id="task-due-date">
-                        <button id="save-task-btn">Guardar</button>
-                        <div class="btn-cerrar">
-                            <label for="btn-modal">cerrar</label>
+            <div id="task-modal" class="modal hidden">
+                <div class="boton-modal">
+                    <label for="btn-modal">
+                        <button id="add-task-btn">Agregar Tarea</button>
+                    </label>
+                </div>
+                <input type="checkbox" id="btn-modal">
+                <div class="container-modal">
+                    <div class="content-modal">
+                        <div class="modal-content">
+                            <span class="close">&times;</span>
+                            <h2 id="modal-title">Agregar Tarea 📝</h2>
+                            <label for="task-name">Nombre de la Tarea:</label>
+                            <input type="text" id="task-name">
+                            <label for="task-desc">Descripción de la Tarea:</label>
+                            <textarea id="task-desc"></textarea>
+                            <label for="task-due-date">Fecha de Entrega:</label>
+                            <input type="date" id="task-due-date">
+                            <button id="save-task-btn">Guardar</button>
+                            <div class="btn-cerrar">
+                                <label for="btn-modal">cerrar</label>
+                            </div>
+                            <label for="btn-modal" class="cerrar-modal"></label>
                         </div>
-                        <label for="btn-modal" class="cerrar-modal"></label>
                     </div>
                 </div>
             </div>
+
+            <div id="pagination" class="content-section">
+                <button id="prev-page-btn">Anterior</button>
+                <span id="page-info"></span>
+                <button id="next-page-btn">Siguiente</button>
+            </div>
         </div>
 
-        <div id="pagination" class="content-section">
-            <button id="prev-page-btn">Anterior</button>
-            <span id="page-info"></span>
-            <button id="next-page-btn">Siguiente</button>
+        <div id="agregar-imagen" class="content-section">
+            <h2>Agregar Imagen 🖼️</h2>
+            <form id="image-upload-form">
+                <label for="image-upload">Seleccionar imagen:</label>
+                <input type="file" id="image-upload" name="image-upload" accept="image/*">
+                <button type="submit">Subir Imagen</button>
+                <button type="submit">Eliminar Imagen</button>
+            </form>
+        </div>
+
+        <div id="ideas" class="content-section">
+            <h2>Ideas 💡</h2>
+            <form id="ideas-form">
+                <label for="idea-text">Escribe tu idea:</label>
+                <textarea id="idea-text" name="idea-text"></textarea>
+                <button type="submit">Agregar Idea</button>
+            </form>
+            <ul id="ideas-list"></ul>
+        </div>
+        <div id="calendario" class="content-section">
+            <h2>Calendario 📅</h2>
+            <div id="calendar-container">
+                <!-- Aquí puedes incrustar un calendario usando una librería como FullCalendar -->
+                <div id="calendar"></div>
+            </div>
         </div>
     </div>
-
-
-
-
-    
-   
+        
+    </div>
 
     <script src="Menu1.js"></script>
+    <script src="https://kit.fontawesome.com/81581fb069.js" crossorigin="anonymous"></script>
+    
+
 </body>
 
 </html>
