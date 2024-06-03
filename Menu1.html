@@ -17,7 +17,7 @@
             <li><a href="#tareas" class="nav-link">Tareas</a></li>
             <li><a href="#ideas" class="nav-link">Ideas</a></li>
             <li><a href="#agregar-imagen" class="nav-link">Agregar Imagen</a></li>
-           <li><a href="#calendario" class="nav-link"> Calendario</a></li>
+            <li><a href="#calendario" class="nav-link">Calendario</a></li>
             <button id="logoutButton">Cerrar Sesión</button>
         </ul>
     </nav>
@@ -25,8 +25,7 @@
     <div class="content">
         <div id="perfil" class="content-section">
             <h2>Perfil</h2>
-            <img src="https://cdn-icons-png.freepik.com/256/14083/14083134.png?semt=ais_hybrid"
-                class="carnet-img">
+            <img src="https://cdn-icons-png.freepik.com/256/14083/14083134.png?semt=ais_hybrid" class="carnet-img">
             <p>Nombres y Apellidos: Mara Andreina Sanchez Lliquin</p>
             <p><label>Cédula:</label> 1670953675</p>
             <p>Correo Electronico: marasanchez.es@outlook.com</p>
@@ -92,7 +91,7 @@
                 <label for="image-upload">Seleccionar imagen:</label>
                 <input type="file" id="image-upload" name="image-upload" accept="image/*">
                 <button type="submit">Subir Imagen</button>
-                <button type="submit">Eliminar Imagen</button>
+                <button type="button" id="delete-image-btn">Eliminar Imagen</button>
             </form>
         </div>
 
@@ -105,20 +104,22 @@
             </form>
             <ul id="ideas-list"></ul>
         </div>
+
         <div id="calendario" class="content-section">
             <h2>Calendario 📅</h2>
-            <div id="calendar-container">
-                <!-- Aquí puedes incrustar un calendario usando una librería como FullCalendar -->
-                <div id="calendar"></div>
+            <div id="calendar"></div>
+            <div id="calendar-header">
+                <span id="calendar-month-year"></span>
+            </div>
+            <div class="calendar-grid">
+
             </div>
         </div>
-    </div>
-        
     </div>
 
     <script src="Menu1.js"></script>
     <script src="https://kit.fontawesome.com/81581fb069.js" crossorigin="anonymous"></script>
-    
+
 
 </body>
 
