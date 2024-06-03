@@ -20,9 +20,11 @@ nav {
     height: 100%;
     overflow: auto;
 }
-nav.show-menu{
+
+nav.show-menu {
     display: block;
 }
+
 nav ul {
     list-style-type: none;
     padding: 0;
@@ -332,4 +334,47 @@ button {
     .content-modal {
         width: 80%;
     }
+}
+
+/* Estilos para el Calendario */
+#calendar {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.calendar-header {
+    font-size: 1.5em;
+    font-weight: 600;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 10px;
+}
+
+.calendar-cell {
+    padding: 20px;
+    border: 1px solid #522929;
+    text-align: center;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #f0f0f0;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+.calendar-cell:hover {
+    background-color: #fcb0b0;
+    cursor: pointer;
 }
