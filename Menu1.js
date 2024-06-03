@@ -324,6 +324,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // Obtener las tareas (esto debería ser reemplazado por la lógica real para obtener las tareas)
+       //REVISAR LOGICA.
     const tasks = [
         { name: 'Tarea 1', dueDate: '2024-06-10' },
         { name: 'Tarea 2', dueDate: '2024-06-15' },
