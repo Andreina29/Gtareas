@@ -15,12 +15,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const nextButton = document.getElementById('next-page-btn');
     const pageInfo = document.getElementById('page-info');
     const deleteImageBtn = document.getElementById('delete-image-btn');
-    const sections1 = document.querySelectorAll('.content-section');
-    const navLinks = document.querySelectorAll('nav ul li a');
-    const logoutButton1 = document.getElementById('logoutButton');
+   
 
-
-    const tasksPerPage = 8;
+    const tasksPerPage = 4;
     let currentPage = 1;
     let editingTask = null;
 
@@ -264,73 +261,5 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    initCalendar();
-    navLinks.forEach(link => {
-        link.addEventListener('click', function (e) {
-            e.preventDefault();
-            const targetSection = document.querySelector(this.getAttribute('href'));
-            sections1.forEach(section => sections1.classList.remove('active'));
-            targetSection.classList.add('active');
-        });
-    });
-
-    logoutButton1.addEventListener('click', function () {
-        alert('Logging out...');
-    });
-
-    // Función para generar el calendario
-    function generateCalendar(tasks) {
-        const calendarGrid = document.querySelector('.calendar-grid');
-        const calendarMonthYear = document.getElementById('calendar-month-year');
-        const currentDate = new Date();
-        const month = currentDate.getMonth();
-        const year = currentDate.getFullYear();
-
-        // Obtener el primer día del mes
-        const firstDay = new Date(year, month, 1).getDay();
-        // Obtener el último día del mes
-        const lastDate = new Date(year, month + 1, 0).getDate();
-
-        // Establecer el encabezado del calendario
-        const monthNames = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'];
-        calendarMonthYear.textContent = `${monthNames[month]} ${year}`;
-
-        // Limpiar la cuadrícula del calendario
-        calendarGrid.innerHTML = '';
-
-        // Rellenar las celdas vacías antes del primer día del mes
-        for (let i = 0; i < firstDay; i++) {
-            const emptyCell = document.createElement('div');
-            emptyCell.classList.add('calendar-cell');
-            calendarGrid.appendChild(emptyCell);
-        }
-
-        // Rellenar las celdas con los días del mes
-        for (let day = 1; day <= lastDate; day++) {
-            const cell = document.createElement('div');
-            cell.classList.add('calendar-cell');
-            cell.textContent = day;
-
-            // Verificar si hay tareas para este día
-            const taskDate = new Date(year, month, day).toISOString().split('T')[0];
-            const task = tasks.find(task => task.dueDate === taskDate);
-
-            if (task) {
-                cell.style.backgroundColor = '#ffcccc'; // Cambia este color según tu preferencia
-            }
-
-            calendarGrid.appendChild(cell);
-        }
-    }
-
-    // Obtener las tareas (esto debería ser reemplazado por la lógica real para obtener las tareas)
-       //REVISAR LOGICA.
-    const tasks = [
-        { name: 'Tarea 1', dueDate: '2024-06-10' },
-        { name: 'Tarea 2', dueDate: '2024-06-15' },
-        { name: 'Tarea 3', dueDate: '2024-06-20' }
-    ];
-
-    // Generar el calendario con las tareas
-    generateCalendar(tasks);
+   
 });
