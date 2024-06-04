@@ -232,34 +232,5 @@ document.addEventListener('DOMContentLoaded', () => {
             alert('Por favor, escribe una idea.');
         }
     });
-
-    // Función para inicializar el calendario
-    function initCalendar() {
-        const calendar = document.getElementById('calendar');
-        const today = new Date();
-        const month = today.getMonth();
-        const year = today.getFullYear();
-
-        const firstDay = new Date(year, month, 1);
-        const lastDay = new Date(year, month + 1, 0);
-
-        const calendarHeader = document.createElement('div');
-        calendarHeader.className = 'calendar-header';
-        calendarHeader.textContent = `${firstDay.toLocaleString('default', { month: 'long' })} ${year}`;
-        calendar.appendChild(calendarHeader);
-
-        const calendarGrid = document.createElement('div');
-        calendarGrid.className = 'calendar-grid';
-        calendar.appendChild(calendarGrid);
-
-        for (let day = 1; day <= lastDay.getDate(); day++) {
-            const date = new Date(year, month, day);
-            const calendarCell = document.createElement('div');
-            calendarCell.className = 'calendar-cell';
-            calendarCell.textContent = day;
-            calendarGrid.appendChild(calendarCell);
-        }
-    }
-
    
 });
