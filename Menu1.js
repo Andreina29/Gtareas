@@ -15,15 +15,22 @@ document.addEventListener('DOMContentLoaded', () => {
     const nextButton = document.getElementById('next-page-btn');
     const pageInfo = document.getElementById('page-info');
     const deleteImageBtn = document.getElementById('delete-image-btn');
-   
+    const ideasForm = document.getElementById('ideas-form');
+    const ideasList = document.getElementById('ideas-list');
+    const imageUploadForm = document.getElementById('image-upload-form');
 
     const tasksPerPage = 4;
     let currentPage = 1;
     let editingTask = null;
 
-    // Recuperar tareas almacenadas en el almacenamiento local
+    // Recuperar tareas, ideas y imagen almacenadas en el almacenamiento local
     const storedTasks = JSON.parse(localStorage.getItem('tasks')) || [];
+    const storedIdeas = JSON.parse(localStorage.getItem('ideas')) || [];
+    const storedImage = localStorage.getItem('uploadedImage');
+    
     displayTasks(storedTasks, currentPage);
+    displayIdeas(storedIdeas);
+    displayImage(storedImage);
 
     // Mostrar la sección de perfil por defecto
     document.getElementById('perfil').classList.add('active');
@@ -192,8 +199,8 @@ document.addEventListener('DOMContentLoaded', () => {
     logoutButton.addEventListener('click', () => {
         cerrarSesion();
     });
-     // Función para manejar el formulario de subir imagen
-    const imageUploadForm = document.getElementById('image-upload-form');
+
+    // Función para manejar el formulario de subir imagen
     imageUploadForm.addEventListener('submit', (e) => {
         e.preventDefault();
         const imageInput = document.getElementById('image-upload');
@@ -201,7 +208,9 @@ document.addEventListener('DOMContentLoaded', () => {
             const file = imageInput.files[0];
             const reader = new FileReader();
             reader.onload = (event) => {
-                console.log('Imagen cargada:', event.target.result);
+                const imageUrl = event.target.result;
+                localStorage.setItem('uploadedImage', imageUrl); // Guardar imagen en localStorage
+                displayImage(imageUrl);
                 alert('Imagen subida con éxito');
             };
             reader.readAsDataURL(file);
@@ -210,27 +219,51 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
+    // Función para mostrar la imagen guardada
+    function displayImage(imageUrl) {
+        const imageDisplay = document.getElementById('image-display');
+        if (imageUrl) {
+            imageDisplay.src = imageUrl;
+            imageDisplay.classList.remove('hidden');
+        } else {
+            imageDisplay.src = '';
+            imageDisplay.classList.add('hidden');
+        }
+    }
+
     // Función para eliminar la imagen subida
     deleteImageBtn.addEventListener('click', () => {
-        const imageInput = document.getElementById('image-upload');
-        imageInput.value = ''; // Limpiar el campo de selección de archivo
+        localStorage.removeItem('uploadedImage'); // Eliminar imagen de localStorage
+        displayImage(null);
         alert('Imagen eliminada.');
     });
 
     // Función para manejar el formulario de ideas
-    const ideasForm = document.getElementById('ideas-form');
     ideasForm.addEventListener('submit', (e) => {
         e.preventDefault();
         const ideaText = document.getElementById('idea-text').value.trim();
         if (ideaText) {
-            const ideasList = document.getElementById('ideas-list');
             const li = document.createElement('li');
             li.textContent = ideaText;
             ideasList.appendChild(li);
             document.getElementById('idea-text').value = '';
+
+            storedIdeas.push(ideaText); // Agregar la idea a la lista de ideas almacenadas
+            localStorage.setItem('ideas', JSON.stringify(storedIdeas)); // Guardar ideas en localStorage
         } else {
             alert('Por favor, escribe una idea.');
         }
     });
-   
+
+    // Función para mostrar las ideas almacenadas
+    function displayIdeas(ideas) {
+        ideasList.innerHTML = '';
+        ideas.forEach(idea => {
+            const li = document.createElement('li');
+            li.textContent = idea;
+            ideasList.appendChild(li);
+        });
+    }
 });
+
+
