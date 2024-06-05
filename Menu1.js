@@ -14,23 +14,23 @@ document.addEventListener('DOMContentLoaded', () => {
     const prevButton = document.getElementById('prev-page-btn');
     const nextButton = document.getElementById('next-page-btn');
     const pageInfo = document.getElementById('page-info');
-    const deleteImageBtn = document.getElementById('delete-image-btn');
     const ideasForm = document.getElementById('ideas-form');
     const ideasList = document.getElementById('ideas-list');
     const imageUploadForm = document.getElementById('image-upload-form');
+    
 
     const tasksPerPage = 4;
     let currentPage = 1;
     let editingTask = null;
 
-    // Recuperar tareas, ideas y imagen almacenadas en el almacenamiento local
+    // Recuperar tareas, ideas e imágenes almacenadas en el almacenamiento local
     const storedTasks = JSON.parse(localStorage.getItem('tasks')) || [];
     const storedIdeas = JSON.parse(localStorage.getItem('ideas')) || [];
-    const storedImage = localStorage.getItem('uploadedImage');
-    
+    const storedImages = JSON.parse(localStorage.getItem('uploadedImages')) || [];
+
     displayTasks(storedTasks, currentPage);
     displayIdeas(storedIdeas);
-    displayImage(storedImage);
+    displayImages(storedImages);
 
     // Mostrar la sección de perfil por defecto
     document.getElementById('perfil').classList.add('active');
@@ -40,7 +40,7 @@ document.addEventListener('DOMContentLoaded', () => {
         link.addEventListener('click', (e) => {
             e.preventDefault();
             sections.forEach(section => section.classList.remove('active'));
-            document.querySelector(link.getAttribute('href')).classList.add('active');  
+            document.querySelector(link.getAttribute('href')).classList.add('active');
         });
     });
 
@@ -209,8 +209,9 @@ document.addEventListener('DOMContentLoaded', () => {
             const reader = new FileReader();
             reader.onload = (event) => {
                 const imageUrl = event.target.result;
-                localStorage.setItem('uploadedImage', imageUrl); // Guardar imagen en localStorage
-                displayImage(imageUrl);
+                storedImages.push(imageUrl);
+                localStorage.setItem('uploadedImages', JSON.stringify(storedImages)); // Guardar imagen en localStorage
+                displayImages(storedImages);
                 alert('Imagen subida con éxito');
             };
             reader.readAsDataURL(file);
@@ -219,24 +220,35 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // Función para mostrar la imagen guardada
-    function displayImage(imageUrl) {
-        const imageDisplay = document.getElementById('image-display');
-        if (imageUrl) {
-            imageDisplay.src = imageUrl;
-            imageDisplay.classList.remove('hidden');
-        } else {
-            imageDisplay.src = '';
-            imageDisplay.classList.add('hidden');
-        }
-    }
+    // Función para mostrar las imágenes guardadas
+    function displayImages(images) {
+        const imageList = document.getElementById('image-list');
+        imageList.innerHTML = ''; // Limpiar lista de imágenes
 
-    // Función para eliminar la imagen subida
-    deleteImageBtn.addEventListener('click', () => {
-        localStorage.removeItem('uploadedImage'); // Eliminar imagen de localStorage
-        displayImage(null);
-        alert('Imagen eliminada.');
-    });
+        images.forEach((imageUrl, index) => {
+            const imageContainer = document.createElement('div');
+            imageContainer.className = 'image-container';
+
+            const img = document.createElement('img');
+            img.src = imageUrl;
+            img.className = 'uploaded-image';
+
+            const deleteBtn = document.createElement('button');
+            deleteBtn.textContent = 'Eliminar';
+            deleteBtn.className = 'delete-image-btn';
+            deleteBtn.onclick = () => {
+                if (confirm('¿Estás seguro de que deseas eliminar esta imagen?')) {
+                    storedImages.splice(index, 1);
+                    localStorage.setItem('uploadedImages', JSON.stringify(storedImages));
+                    displayImages(storedImages);
+                }
+            };
+
+            imageContainer.appendChild(img);
+            imageContainer.appendChild(deleteBtn);
+            imageList.appendChild(imageContainer);
+        });
+    }
 
     // Función para manejar el formulario de ideas
     ideasForm.addEventListener('submit', (e) => {
