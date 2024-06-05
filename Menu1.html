@@ -11,7 +11,6 @@
 <body>
 
     <nav>
-        <i id="menu-icon" class="fa-solid fa-bars"></i>
         <ul>
             <li><a href="#perfil" class="nav-link">Perfil</a></li>
             <li><a href="#tareas" class="nav-link">Tareas</a></li>
@@ -90,8 +89,8 @@
                 <label for="image-upload">Seleccionar imagen:</label>
                 <input type="file" id="image-upload" name="image-upload" accept="image/*">
                 <button type="submit">Subir Imagen</button>
-                <button type="button" id="delete-image-btn">Eliminar Imagen</button>
             </form>
+            <div id="image-list" class="image-list"></div>
         </div>
 
         <div id="ideas" class="content-section">
@@ -103,13 +102,10 @@
             </form>
             <ul id="ideas-list"></ul>
         </div>
-
-
     </div>
 
     <script src="Menu1.js"></script>
     <script src="https://kit.fontawesome.com/81581fb069.js" crossorigin="anonymous"></script>
-
 
 </body>
 
