@@ -2,7 +2,7 @@ body {
     margin: 0;
     padding: 0;
     font-family: Georgia, 'Times New Roman', Times, serif;
-    background-image: url('https://www.wimi-teamwork.com/static/medias/logiciels-gestion-des-taches-1280x640-1-980x490.png');
+    background-image: linear-gradient(#f3f1f180, #00000080), url('https://www.wimi-teamwork.com/static/medias/logiciels-gestion-des-taches-1280x640-1-980x490.png');
     background-size: cover;
     background-position: center;
     display: flex;
@@ -10,6 +10,7 @@ body {
     align-items: center;
     height: 100vh;
     border-radius: 2%;
+    text-transform: uppercase;
 }
 .container{
     border-radius: 2px;
@@ -88,6 +89,7 @@ button {
     border: none;
     border-radius: 5px;
     cursor: pointer;
+    text-transform: uppercase;
 }
 
 button:hover {
