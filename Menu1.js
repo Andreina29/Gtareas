@@ -17,7 +17,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const ideasForm = document.getElementById('ideas-form');
     const ideasList = document.getElementById('ideas-list');
     const imageUploadForm = document.getElementById('image-upload-form');
-    
 
     const tasksPerPage = 4;
     let currentPage = 1;
@@ -277,5 +276,3 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 });
-
-
