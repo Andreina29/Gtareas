@@ -49,14 +49,14 @@ nav ul li a {
 }
 
 nav ul li a:hover {
-    background-color: #ecbdbd;
+    background-color: #faeaea;;
 }
 
 #logoutButton {
     display: none;
     width: 100%;
     padding: 14px 16px;
-    background-color: #fdf9f9;
+    background-color: #221f1f;
     color: rgb(37, 37, 37);
     border: none;
     cursor: pointer;
@@ -65,7 +65,7 @@ nav ul li a:hover {
 }
 
 #logoutButton:hover {
-    background-color: #ecc3c3;
+    background-color: #faeaea;;
 }
 
 .content {
@@ -199,11 +199,11 @@ nav ul li a:hover {
 }
 
 button {
-    background-color: rgb(233, 209, 217);
+    background-color:#faeaea;
     margin: 10px;
     padding: 10px;
     border-radius: 9px;
-    border: #b37171;
+    border: #faeaea;;
     text-transform: uppercase;
 }
 
