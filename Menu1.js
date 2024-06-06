@@ -94,185 +94,148 @@ document.addEventListener('DOMContentLoaded', () => {
         const tr = document.createElement('tr');
         tr.className = 'task-item';
         tr.innerHTML = `
-            <td><strong class="task-name">${name}</strong></td>
-            <td><p class="task-desc">${desc}</p></td>
-            <td><p class="task-due-date">${dueDate}</p></td>
+            <td>${name}</td>
+            <td>${desc}</td>
+            <td>${dueDate}</td>
             <td>
-                <button class="edit-task-btn">Editar</button>
-                <button class="delete-task-btn">Eliminar</button>
+                <button class="edit-btn">Editar</button>
+                <button class="delete-btn">Eliminar</button>
             </td>
         `;
-        taskList.appendChild(tr);
+        const editBtn = tr.querySelector('.edit-btn');
+        const deleteBtn = tr.querySelector('.delete-btn');
 
-        const editBtn = tr.querySelector('.edit-task-btn');
-        const deleteBtn = tr.querySelector('.delete-task-btn');
-
-        // Editar tarea
+        // Función para editar una tarea
         editBtn.addEventListener('click', () => {
-            taskNameInput.value = tr.querySelector('.task-name').textContent;
-            taskDescInput.value = tr.querySelector('.task-desc').textContent;
-            taskDueDateInput.value = tr.querySelector('.task-due-date').textContent;
+            const taskIndex = Array.from(taskList.children).indexOf(tr);
+            const task = storedTasks[taskIndex];
+            editingTask = tr;
+            taskNameInput.value = task.name;
+            taskDescInput.value = task.desc;
+            taskDueDateInput.value = task.dueDate;
             modalTitle.textContent = 'Editar Tarea';
             modal.classList.remove('hidden');
-            editingTask = tr;
         });
 
-        // Eliminar tarea
+        // Función para eliminar una tarea
         deleteBtn.addEventListener('click', () => {
-            if (confirm('¿Estás seguro de que deseas eliminar esta tarea?')) {
-                const taskIndex = Array.from(taskList.children).indexOf(tr);
-                storedTasks.splice(taskIndex, 1);
-                localStorage.setItem('tasks', JSON.stringify(storedTasks));
-                taskList.removeChild(tr);
-                displayTasks(storedTasks, currentPage);
-            }
+            const taskIndex = Array.from(taskList.children).indexOf(tr);
+            storedTasks.splice(taskIndex, 1);
+            localStorage.setItem('tasks', JSON.stringify(storedTasks));
+            displayTasks(storedTasks, currentPage);
         });
+
+        taskList.appendChild(tr);
     }
 
-    // Función para mostrar las tareas con paginación
+    // Función para mostrar las tareas
     function displayTasks(tasks, page) {
         taskList.innerHTML = '';
-        const start = (page - 1) * tasksPerPage;
-        const end = start + tasksPerPage;
-        const paginatedTasks = tasks.slice(start, end);
+        const startIndex = (page - 1) * tasksPerPage;
+        const endIndex = startIndex + tasksPerPage;
+        const paginatedTasks = tasks.slice(startIndex, endIndex);
 
-        paginatedTasks.forEach(task => addTask(task.name, task.desc, task.dueDate));
-        displayPagination(tasks.length, page);
-    }
+        paginatedTasks.forEach(task => {
+            addTask(task.name, task.desc, task.dueDate);
+        });
 
-    // Función para mostrar los controles de paginación
-    function displayPagination(totalTasks, currentPage) {
-        const paginationContainer = document.getElementById('pagination');
-        paginationContainer.innerHTML = '';
-
-        const totalPages = Math.ceil(totalTasks / tasksPerPage);
-
-        const prevButton = document.createElement('button');
-        prevButton.textContent = 'Anterior';
-        prevButton.classList.add('page-btn');
-        prevButton.disabled = currentPage === 1;
-        prevButton.onclick = () => {
-            if (currentPage > 1) {
-                currentPage--;
-                displayTasks(storedTasks, currentPage);
-            }
-        };
-        paginationContainer.appendChild(prevButton);
-
-        for (let i = 1; i <= totalPages; i++) {
-            const pageButton = document.createElement('button');
-            pageButton.textContent = i;
-            pageButton.classList.add('page-btn');
-            if (i === currentPage) {
-                pageButton.classList.add('active');
-            }
-            pageButton.onclick = () => {
-                currentPage = i;
-                displayTasks(storedTasks, currentPage);
-            };
-            paginationContainer.appendChild(pageButton);
-        }
-
-        const nextButton = document.createElement('button');
-        nextButton.textContent = 'Siguiente';
-        nextButton.classList.add('page-btn');
-        nextButton.disabled = currentPage === totalPages;
-        nextButton.onclick = () => {
-            if (currentPage < totalPages) {
-                currentPage++;
-                displayTasks(storedTasks, currentPage);
-            }
-        };
-        paginationContainer.appendChild(nextButton);
-
+        const totalPages = Math.ceil(tasks.length / tasksPerPage);
         pageInfo.textContent = `Página ${currentPage} de ${totalPages}`;
+        prevButton.disabled = currentPage === 1;
+        nextButton.disabled = currentPage === totalPages;
     }
+
+    // Función para manejar la paginación
+    prevButton.addEventListener('click', () => {
+        if (currentPage > 1) {
+            currentPage--;
+            displayTasks(storedTasks, currentPage);
+        }
+    });
+
+    nextButton.addEventListener('click', () => {
+        const totalPages = Math.ceil(storedTasks.length / tasksPerPage);
+        if (currentPage < totalPages) {
+            currentPage++;
+            displayTasks(storedTasks, currentPage);
+        }
+    });
 
     // Función para cerrar sesión
-    function cerrarSesion() {
-        localStorage.removeItem('userSession'); // Limpiar datos de sesión
-        window.location.href = 'Gtareas2.html'; // Redirigir a la página de inicio de sesión
-    }
-
-    // Añadir evento de cierre de sesión
     logoutButton.addEventListener('click', () => {
-        cerrarSesion();
+        window.location.href = 'login.html'; // Redirigir a la página de inicio de sesión
     });
 
-    // Función para manejar el formulario de subir imagen
-    imageUploadForm.addEventListener('submit', (e) => {
-        e.preventDefault();
-        const imageInput = document.getElementById('image-upload');
-        if (imageInput.files.length > 0) {
-            const file = imageInput.files[0];
-            const reader = new FileReader();
-            reader.onload = (event) => {
-                const imageUrl = event.target.result;
-                storedImages.push(imageUrl);
-                localStorage.setItem('uploadedImages', JSON.stringify(storedImages)); // Guardar imagen en localStorage
-                displayImages(storedImages);
-                alert('Imagen subida con éxito');
-            };
-            reader.readAsDataURL(file);
-        } else {
-            alert('Por favor, selecciona una imagen para subir.');
-        }
-    });
-
-    // Función para mostrar las imágenes guardadas
-    function displayImages(images) {
-        const imageList = document.getElementById('image-list');
-        imageList.innerHTML = ''; // Limpiar lista de imágenes
-
-        images.forEach((imageUrl, index) => {
-            const imageContainer = document.createElement('div');
-            imageContainer.className = 'image-container';
-
-            const img = document.createElement('img');
-            img.src = imageUrl;
-            img.className = 'uploaded-image';
-
-            const deleteBtn = document.createElement('button');
-            deleteBtn.textContent = 'Eliminar';
-            deleteBtn.className = 'delete-image-btn';
-            deleteBtn.onclick = () => {
-                if (confirm('¿Estás seguro de que deseas eliminar esta imagen?')) {
-                    storedImages.splice(index, 1);
-                    localStorage.setItem('uploadedImages', JSON.stringify(storedImages));
-                    displayImages(storedImages);
-                }
-            };
-
-            imageContainer.appendChild(img);
-            imageContainer.appendChild(deleteBtn);
-            imageList.appendChild(imageContainer);
-        });
-    }
-
-    // Función para manejar el formulario de ideas
+    // Función para manejar el envío de ideas
     ideasForm.addEventListener('submit', (e) => {
         e.preventDefault();
         const ideaText = document.getElementById('idea-text').value.trim();
-        if (ideaText) {
-            const li = document.createElement('li');
-            li.textContent = ideaText;
-            ideasList.appendChild(li);
-            document.getElementById('idea-text').value = '';
-
-            storedIdeas.push(ideaText); // Agregar la idea a la lista de ideas almacenadas
-            localStorage.setItem('ideas', JSON.stringify(storedIdeas)); // Guardar ideas en localStorage
-        } else {
-            alert('Por favor, escribe una idea.');
+        if (!ideaText) {
+            alert('Por favor, ingrese una idea.');
+            return;
         }
+        storedIdeas.push(ideaText);
+        localStorage.setItem('ideas', JSON.stringify(storedIdeas));
+        displayIdeas(storedIdeas);
+        document.getElementById('idea-text').value = '';
     });
 
-    // Función para mostrar las ideas almacenadas
+    // Función para mostrar las ideas
     function displayIdeas(ideas) {
         ideasList.innerHTML = '';
-        ideas.forEach(idea => {
+        ideas.forEach((idea, index) => {
             const li = document.createElement('li');
             li.textContent = idea;
+            const deleteBtn = document.createElement('button');
+            deleteBtn.textContent = 'Eliminar';
+            deleteBtn.addEventListener('click', () => {
+                storedIdeas.splice(index, 1);
+                localStorage.setItem('ideas', JSON.stringify(storedIdeas));
+                displayIdeas(storedIdeas);
+            });
+            li.appendChild(deleteBtn);
             ideasList.appendChild(li);
+        });
+    }
+
+    // Función para manejar la carga de imágenes
+    imageUploadForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const imageUploadInput = document.getElementById('image-upload');
+        const file = imageUploadInput.files[0];
+        if (!file) {
+            alert('Por favor, seleccione una imagen.');
+            return;
+        }
+        const reader = new FileReader();
+        reader.onload = (e) => {
+            const imageUrl = e.target.result;
+            storedImages.push(imageUrl);
+            localStorage.setItem('uploadedImages', JSON.stringify(storedImages));
+            displayImages(storedImages);
+        };
+        reader.readAsDataURL(file);
+    });
+
+    // Función para mostrar las imágenes
+    function displayImages(images) {
+        const imageList = document.getElementById('image-list');
+        imageList.innerHTML = '';
+        images.forEach((image, index) => {
+            const imgContainer = document.createElement('div');
+            imgContainer.classList.add('image-container');
+            const img = document.createElement('img');
+            img.src = image;
+            const deleteBtn = document.createElement('button');
+            deleteBtn.textContent = 'Eliminar';
+            deleteBtn.addEventListener('click', () => {
+                storedImages.splice(index, 1);
+                localStorage.setItem('uploadedImages', JSON.stringify(storedImages));
+                displayImages(storedImages);
+            });
+            imgContainer.appendChild(img);
+            imgContainer.appendChild(deleteBtn);
+            imageList.appendChild(imgContainer);
         });
     }
 });
