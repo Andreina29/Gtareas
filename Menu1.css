@@ -21,7 +21,7 @@ nav {
     height: 75px; /* Ajustar la altura del menú de navegación */
     border-radius: 10px;
     z-index: 1000;
-    background-color: #faeaea; /* Fondo del menú */
+    background-color: rgb(247, 223, 223); /* Fondo del menú */
     box-shadow: 2px 5px 2px 5px rgba(19, 18, 18, 0.2);
     display: flex;
     max-width: 10;
