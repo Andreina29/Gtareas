@@ -9,30 +9,33 @@ body {
     background-attachment: fixed;
     text-transform: uppercase;
     display: flex;
+    flex-direction: column; /* Permitir flexibilidad vertical */
+    min-height: 100vh;
 }
 
 nav {
+
     width: 100%;
-    border-radius: 0;
-    position: fixed;
+    position: relative;
     top: 0;
-    height: 80%;
+    height: 75px; /* Ajustar la altura del menú de navegación */
+    border-radius: 10px;
     z-index: 1000;
-    box-shadow: 0 2px 5px rgb(0, 0, 0, 0.2);
-
-}
-
-nav.show-menu {
-    display: block;
+    background-color: #faeaea; /* Fondo del menú */
+    box-shadow: 2px 5px 2px 5px rgba(19, 18, 18, 0.2);
+    display: flex;
+    max-width: 10;
+    
 }
 
 nav ul {
-    text-align: center;
     display: flex;
+    position: relative;
     justify-content: space-around;
     align-items: center;
     padding: 0;
     margin: 0;
+    list-style: none;
 }
 
 nav ul li {
@@ -42,19 +45,16 @@ nav ul li {
 nav ul li a {
     display: block;
     color: rgb(12, 12, 12);
-    text-align: center;
-    padding:  15px;
+    padding: 15px;
     text-decoration: none;
-    
 }
 
 nav ul li a:hover {
-    background-color: #faeaea;;
+    background-color: #faeaea;
 }
 
 #logoutButton {
-    display: none;
-    width: 100%;
+    display: block;
     padding: 14px 16px;
     background-color: #221f1f;
     color: rgb(37, 37, 37);
@@ -65,18 +65,19 @@ nav ul li a:hover {
 }
 
 #logoutButton:hover {
-    background-color: #faeaea;;
+    background-color: #faeaea;
 }
 
 .content {
-    margin-left: 220px;
+    margin-top: 100px; /* Dejar espacio para el menú de navegación */
     padding: 20px;
+    flex: 1;
 }
 
 .content-section {
     display: none;
     padding: 20px;
-    margin: 20px;
+    margin: 20px 0;
     background-color: rgba(255, 255, 255, 0.788);
     border-radius: 8px;
 }
@@ -137,7 +138,7 @@ nav ul li a:hover {
 #save-task-btn {
     padding: 10px;
     margin: 15px;
-    background-color: rgb(240, 225, 238);
+    background-color: rgb(247, 223, 223);
     color: #0f0f0f;
     border-radius: 4px;
     cursor: pointer;
@@ -145,14 +146,14 @@ nav ul li a:hover {
 }
 
 #save-task-btn:hover {
-    background-color: #efd9f1;
+    background-color: rgb(247, 223, 223);
 }
 
 .modal-content {
     background-color: #fefefe;
     margin: 15px;
     padding: 10px;
-    border: 1px solid #b69f9f;
+    border: 1px solid rgb(247, 223, 223);
     width: 90%;
     border-radius: 8px;
 }
@@ -186,7 +187,7 @@ nav ul li a:hover {
 .task-item button {
     margin: 10px 40px;
     padding: 10px 40px;
-    background-color: rgb(233, 209, 217);
+    background-color: rgb(247, 223, 223);
     color: rgb(41, 39, 39);
     border: none;
     cursor: pointer;
@@ -195,15 +196,15 @@ nav ul li a:hover {
 }
 
 .task-item button:hover {
-    background-color: #ebd4d4;
+    background-color: rgb(247, 223, 223);
 }
 
 button {
-    background-color:#faeaea;
+    background-color: rgb(247, 223, 223);
     margin: 10px;
     padding: 10px;
     border-radius: 9px;
-    border: #faeaea;;
+    border: none;
     text-transform: uppercase;
 }
 
@@ -233,7 +234,7 @@ button {
 }
 
 #pagination button:disabled {
-    background-color: #ccc;
+    background-color: #fcfbfb;
     cursor: not-allowed;
 }
 
@@ -253,7 +254,7 @@ button {
 
 .boton-modal label {
     padding: 10px 15px;
-    background-color: rgb(233, 209, 217);
+    background-color: rgb(247, 223, 223);
     color: #292727;
     border-radius: 4px;
     cursor: pointer;
@@ -261,8 +262,8 @@ button {
 }
 
 .boton-modal label:hover {
-    background-color: rgb(241, 221, 221);
-    color: rgb(241, 221, 221);
+    background-color: rgb(247, 223, 223);
+    color: rgb(247, 223, 223);
     border-color: #aa9797;
 }
 
@@ -315,7 +316,7 @@ button {
 .content-modal .btn-cerrar label {
     padding: 10px;
     margin: 15px;
-    background-color: rgb(240, 225, 238);
+    background-color: rgb(247, 223, 223);
     color: #0f0f0f;
     border-radius: 4px;
     cursor: pointer;
@@ -323,7 +324,7 @@ button {
 }
 
 .content-modal .btn-cerrar label:hover {
-    background-color: #ebd9d9;
+    background-color: rgb(247, 223, 223);
 }
 
 .cerrar-modal {
@@ -407,46 +408,3 @@ img {
         width: 80%;
     }
 }
-
-/* Nuevos estilos para el menú */
-nav ul {
-    background-color: #faeaea; /* Cambia el color de fondo del menú */
-    padding: 0;
-    margin: 0;
-}
-
-nav ul li {
-    float: none; /* Cambia el estilo de visualización de los elementos del menú */
-    text-align: left; /* Alinea el texto a la izquierda */
-}
-
-nav ul li a {
-    display: block;
-    color: rgb(31, 29, 29);
-    padding: 15px;
-    text-decoration: none;
-    border-bottom: 1px solid hsl(0, 39%, 21%); /* Añade un borde inferior a cada elemento del menú */
-}
-
-nav ul li:last-child a {
-    border-bottom: none; /* Elimina el borde inferior del último elemento del menú */
-}
-
-nav ul li a:hover {
-    background-color:  hsl(0, 39%, 21%); /* Cambia el color de fondo al pasar el cursor sobre un elemento del menú */
-}
-
-#logoutButton {
-    float: none; /* Centra el botón de cerrar sesión */
-    width: 100%;
-    padding: 15px;
-    background-color: #faeaea; /* Cambia el color de fondo del botón */
-    border: none;
-    text-align: center;
-    cursor: pointer;
-}
-
-#logoutButton:hover {
-    background-color:#faeaea; /* Cambia el color de fondo al pasar el cursor sobre el botón de cerrar sesión */
-}
-
