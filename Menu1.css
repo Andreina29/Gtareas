@@ -3,7 +3,7 @@
 body {
     margin: 10px;
     padding: 10px;
-    font-family: 'Times New Roman', Times, serif; /* Cambia la fuente del cuerpo */
+    font-family: 'Poppins', sans-serif; /* Cambiar la fuente del cuerpo */
     background-image: linear-gradient(#00000080, #00000080), url('https://www.wimi-teamwork.com/static/medias/logiciels-gestion-des-taches-1280x640-1-980x490.png');
     background-size: cover;
     background-attachment: fixed;
@@ -11,11 +11,9 @@ body {
     display: flex;
     flex-direction: column; /* Permitir flexibilidad vertical */
     min-height: 100vh;
-    
 }
 
 nav {
-
     width: 100%;
     position: relative;
     top: 0;
@@ -25,8 +23,6 @@ nav {
     background-color: rgb(247, 223, 223); /* Fondo del menú */
     box-shadow: 2px 5px 2px 5px rgba(19, 18, 18, 0.2);
     display: flex;
-    max-width: 10;
-    
 }
 
 nav ul {
@@ -404,8 +400,53 @@ img {
     margin-top: 10px;
 }
 
-@media screen and (max-width: 800px) {
-    .content-modal {
-        width: 80%;
-    }
+/* Nueva sección para el horario de materias */
+#horario-form {
+    margin-top: 20px;
+}
+
+#horario-list {
+    list-style: none;
+    padding: 0;
+    margin: 20px 0;
+}
+
+#horario-list li {
+    background-color: #faf4f4;
+    padding: 20px;
+    border: 1px solid #131212;
+    margin-bottom: 10px;
+    border-radius: 30px;
+}
+
+#horario-list li div {
+    flex: 1;
+}
+
+#horario-list li button {
+    margin: 10px 40px;
+    padding: 10px 40px;
+    background-color: rgb(247, 223, 223);
+    color: rgb(41, 39, 39);
+    border: none;
+    cursor: pointer;
+    border-radius: 10px;
+    text-transform: uppercase;
+}
+
+#horario-list li button:hover {
+    background-color: rgb(247, 223, 223);
+}
+
+#horario-name,
+#horario-desc,
+#horario-due-date {
+    width: 95%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+    height: 100%;
+    resize: vertical;
 }
