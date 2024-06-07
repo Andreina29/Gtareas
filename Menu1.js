@@ -17,6 +17,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const ideasForm = document.getElementById('ideas-form');
     const ideasList = document.getElementById('ideas-list');
     const imageUploadForm = document.getElementById('image-upload-form');
+    const horarioSection = document.getElementById('horario');
+    const horarioForm = document.getElementById('horario-form');
+    const horarioList = document.getElementById('horario-list');
 
     const tasksPerPage = 4;
     let currentPage = 1;
@@ -238,4 +241,29 @@ document.addEventListener('DOMContentLoaded', () => {
             imageList.appendChild(imgContainer);
         });
     }
+    // Función para agregar una nueva materia al horario
+    function addMateria(materia, diaSemana, horaInicio, horaFin) {
+        const li = document.createElement('li');
+        li.textContent = `Materia: ${materia}, Día: ${diaSemana}, Hora de inicio: ${horaInicio}, Hora de fin: ${horaFin}`;
+        horarioList.appendChild(li);
+    }
+
+    // Manejar la presentación del formulario de horario y agregar materia
+    horarioForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const materia = document.getElementById('materia').value.trim();
+        const diaSemana = document.getElementById('dia-semana').value;
+        const horaInicio = document.getElementById('hora-inicio').value;
+        const horaFin = document.getElementById('hora-fin').value;
+
+        if (!materia || !diaSemana || !horaInicio || !horaFin) {
+            alert('Por favor, complete todos los campos.');
+            return;
+        }
+
+        addMateria(materia, diaSemana, horaInicio, horaFin);
+
+        // Limpiar el formulario después de agregar la materia
+        horarioForm.reset();
+    });
 });
