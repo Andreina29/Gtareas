@@ -16,6 +16,7 @@
             <li><a href="#tareas" class="nav-link">Tareas</a></li>
             <li><a href="#ideas" class="nav-link">Ideas</a></li>
             <li><a href="#agregar-imagen" class="nav-link">Agregar Imagenes</a></li>
+            <li><a href="#horario" class="nav-link">Horario de Materias</a></li>
         </ul>
         <button id="logout">Cerrar Sesión</button>
         
@@ -102,6 +103,34 @@
                 <button type="submit">Agregar Ideas</button>
             </form>
             <ul id="ideas-list"></ul>
+        </div>
+        <div id="horario" class="content-section">
+            <h2>Horario de Materias 📚</h2>
+            <form id="horario-form">
+                <label for="materia">Materia:</label>
+                <input type="text" id="materia" name="materia" required>
+                
+                <label for="dia-semana">Día de la Semana:</label>
+                <select id="dia-semana" name="dia-semana" required>
+                    <option value="">Selecciona un día</option>
+                    <option value="lunes">Lunes</option>
+                    <option value="martes">Martes</option>
+                    <option value="miércoles">Miércoles</option>
+                    <option value="jueves">Jueves</option>
+                    <option value="viernes">Viernes</option>
+        
+                </select>
+                
+                <label for="hora-inicio">Hora de Inicio:</label>
+                <input type="time" id="hora-inicio" name="hora-inicio" required>
+                
+                <label for="hora-fin">Hora de Fin:</label>
+                <input type="time" id="hora-fin" name="hora-fin" required>
+                
+                <button type="submit">Agregar Materia</button>
+            </form>
+            
+            <ul id="horario-list" class="horario-list"></ul>
         </div>
     </div>
 
