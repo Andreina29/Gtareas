@@ -266,5 +266,5 @@ document.addEventListener('DOMContentLoaded', () => {
         // Limpiar el formulario después de agregar la materia
         horarioForm.reset();
     });
-    .
+    
 });
