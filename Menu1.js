@@ -29,10 +29,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const storedTasks = JSON.parse(localStorage.getItem('tasks')) || [];
     const storedIdeas = JSON.parse(localStorage.getItem('ideas')) || [];
     const storedImages = JSON.parse(localStorage.getItem('uploadedImages')) || [];
+    const storedMaterias = JSON.parse(localStorage.getItem('materias')) || [];
 
     displayTasks(storedTasks, currentPage);
     displayIdeas(storedIdeas);
     displayImages(storedImages);
+    displayMaterias(storedMaterias);
 
     // Mostrar la sección de perfil por defecto
     document.getElementById('perfil').classList.add('active');
@@ -241,6 +243,14 @@ document.addEventListener('DOMContentLoaded', () => {
             imageList.appendChild(imgContainer);
         });
     }
+    
+    // Función para mostrar las materias
+    function displayMaterias(materias) {
+        materias.forEach(materia => {
+            addMateria(materia.name, materia.diaSemana, materia.horaInicio, materia.horaFin);
+        });
+    }
+
     // Función para agregar una nueva materia al horario
     function addMateria(materia, diaSemana, horaInicio, horaFin) {
         const li = document.createElement('li');
@@ -255,16 +265,21 @@ document.addEventListener('DOMContentLoaded', () => {
         const diaSemana = document.getElementById('dia-semana').value;
         const horaInicio = document.getElementById('hora-inicio').value;
         const horaFin = document.getElementById('hora-fin').value;
+        
 
         if (!materia || !diaSemana || !horaInicio || !horaFin) {
             alert('Por favor, complete todos los campos.');
             return;
         }
 
+        const nuevaMateria = { name: materia, diaSemana: diaSemana, horaInicio: horaInicio, horaFin: horaFin };
+        storedMaterias.push(nuevaMateria);
+        localStorage.setItem('materias', JSON.stringify(storedMaterias));
+
         addMateria(materia, diaSemana, horaInicio, horaFin);
 
         // Limpiar el formulario después de agregar la materia
         horarioForm.reset();
+     
     });
-    
 });
