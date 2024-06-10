@@ -48,12 +48,13 @@ nav ul li a {
 
 nav ul li a:hover {
     background-color: #faeaea;
+    border-radius: 10px;
 }
 
 #logout {
-    display: block; #fae0e0;
+    display: block;
     padding: 14px 16px;
-    background-color: ;
+    background-color: #f5d8d8;
     color: rgb(37, 37, 37);
     border: none;
     cursor: pointer;
@@ -450,3 +451,4 @@ img {
     height: 100%;
     resize: vertical;
 }
+
