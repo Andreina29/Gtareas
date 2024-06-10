@@ -452,3 +452,46 @@ img {
     resize: vertical;
 }
 
+/* Nuevos botones de editar, guardar y eliminar para horario de materias */
+.horario-btn {
+    padding: 10px 20px;
+    margin: 5px;
+    background-color: #e6d9dd;
+    color: rgb(49, 11, 11);
+    border: none;
+    cursor: pointer;
+    border-radius: 4px;
+    text-transform: uppercase;
+    transition: background-color 300ms ease;
+}
+
+.horario-btn:hover {
+    background-color: #262925;
+}
+
+.horario-btn.editar {
+    background-color: #cce5ff;
+    color: #004085;
+}
+
+.horario-btn.editar:hover {
+    background-color: #b8daff;
+}
+
+.horario-btn.guardar {
+    background-color: #d4edda;
+    color: #155724;
+}
+
+.horario-btn.guardar:hover {
+    background-color: #c3e6cb;
+}
+
+.horario-btn.eliminar {
+    background-color: #f8d7da;
+    color: #721c24;
+}
+
+.horario-btn.eliminar:hover {
+    background-color: #f5c6cb;
+}
