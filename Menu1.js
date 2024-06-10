@@ -17,7 +17,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const ideasForm = document.getElementById('ideas-form');
     const ideasList = document.getElementById('ideas-list');
     const imageUploadForm = document.getElementById('image-upload-form');
-    const horarioSection = document.getElementById('horario');
     const horarioForm = document.getElementById('horario-form');
     const horarioList = document.getElementById('horario-list');
 
@@ -25,7 +24,6 @@ document.addEventListener('DOMContentLoaded', () => {
     let currentPage = 1;
     let editingTask = null;
 
-    // Recuperar tareas, ideas e imágenes almacenadas en el almacenamiento local
     const storedTasks = JSON.parse(localStorage.getItem('tasks')) || [];
     const storedIdeas = JSON.parse(localStorage.getItem('ideas')) || [];
     const storedImages = JSON.parse(localStorage.getItem('uploadedImages')) || [];
@@ -36,10 +34,8 @@ document.addEventListener('DOMContentLoaded', () => {
     displayImages(storedImages);
     displayMaterias(storedMaterias);
 
-    // Mostrar la sección de perfil por defecto
     document.getElementById('perfil').classList.add('active');
 
-    // Manejar enlaces de navegación
     links.forEach(link => {
         link.addEventListener('click', (e) => {
             e.preventDefault();
@@ -48,7 +44,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Función para agregar una nueva tarea
     addTaskBtn.addEventListener('click', () => {
         editingTask = null;
         taskNameInput.value = '';
@@ -58,12 +53,10 @@ document.addEventListener('DOMContentLoaded', () => {
         modal.classList.remove('hidden');
     });
 
-    // Función para cerrar el modal
     closeModalBtn.addEventListener('click', () => {
         modal.classList.add('hidden');
     });
 
-    // Función para guardar la tarea
     saveTaskBtn.addEventListener('click', () => {
         const taskName = taskNameInput.value.trim();
         const taskDesc = taskDescInput.value.trim();
@@ -75,13 +68,11 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         if (editingTask) {
-            // Editar tarea existente
             const taskIndex = Array.from(taskList.children).indexOf(editingTask);
             storedTasks[taskIndex].name = taskName;
             storedTasks[taskIndex].desc = taskDesc;
             storedTasks[taskIndex].dueDate = taskDueDate;
         } else {
-            // Agregar nueva tarea
             const task = { name: taskName, desc: taskDesc, dueDate: taskDueDate };
             storedTasks.push(task);
         }
@@ -94,7 +85,6 @@ document.addEventListener('DOMContentLoaded', () => {
         displayTasks(storedTasks, currentPage);
     });
 
-    // Función para agregar una tarea a la lista
     function addTask(name, desc, dueDate) {
         const tr = document.createElement('tr');
         tr.className = 'task-item';
@@ -110,7 +100,6 @@ document.addEventListener('DOMContentLoaded', () => {
         const editBtn = tr.querySelector('.edit-btn');
         const deleteBtn = tr.querySelector('.delete-btn');
 
-        // Función para editar una tarea
         editBtn.addEventListener('click', () => {
             const taskIndex = Array.from(taskList.children).indexOf(tr);
             const task = storedTasks[taskIndex];
@@ -122,7 +111,6 @@ document.addEventListener('DOMContentLoaded', () => {
             modal.classList.remove('hidden');
         });
 
-        // Función para eliminar una tarea
         deleteBtn.addEventListener('click', () => {
             const taskIndex = Array.from(taskList.children).indexOf(tr);
             storedTasks.splice(taskIndex, 1);
@@ -133,7 +121,6 @@ document.addEventListener('DOMContentLoaded', () => {
         taskList.appendChild(tr);
     }
 
-    // Función para mostrar las tareas
     function displayTasks(tasks, page) {
         taskList.innerHTML = '';
         const startIndex = (page - 1) * tasksPerPage;
@@ -150,7 +137,6 @@ document.addEventListener('DOMContentLoaded', () => {
         nextButton.disabled = currentPage === totalPages;
     }
 
-    // Función para manejar la paginación
     prevButton.addEventListener('click', () => {
         if (currentPage > 1) {
             currentPage--;
@@ -166,12 +152,10 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // Función para cerrar sesión
     logoutButton.addEventListener('click', () => {
-        window.location.href = 'login.html'; // Redirigir a la página de inicio de sesión
+        window.location.href = 'login.html';
     });
 
-    // Función para manejar el envío de ideas
     ideasForm.addEventListener('submit', (e) => {
         e.preventDefault();
         const ideaText = document.getElementById('idea-text').value.trim();
@@ -185,7 +169,6 @@ document.addEventListener('DOMContentLoaded', () => {
         document.getElementById('idea-text').value = '';
     });
 
-    // Función para mostrar las ideas
     function displayIdeas(ideas) {
         ideasList.innerHTML = '';
         ideas.forEach((idea, index) => {
@@ -203,7 +186,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Función para manejar la carga de imágenes
     imageUploadForm.addEventListener('submit', (e) => {
         e.preventDefault();
         const imageUploadInput = document.getElementById('image-upload');
@@ -222,7 +204,6 @@ document.addEventListener('DOMContentLoaded', () => {
         reader.readAsDataURL(file);
     });
 
-    // Función para mostrar las imágenes
     function displayImages(images) {
         const imageList = document.getElementById('image-list');
         imageList.innerHTML = '';
@@ -243,29 +224,13 @@ document.addEventListener('DOMContentLoaded', () => {
             imageList.appendChild(imgContainer);
         });
     }
-    
-    // Función para mostrar las materias
-    function displayMaterias(materias) {
-        materias.forEach(materia => {
-            addMateria(materia.name, materia.diaSemana, materia.horaInicio, materia.horaFin);
-        });
-    }
 
-    // Función para agregar una nueva materia al horario
-    function addMateria(materia, diaSemana, horaInicio, horaFin) {
-        const li = document.createElement('li');
-        li.textContent = `Materia: ${materia}, Día: ${diaSemana}, Hora de inicio: ${horaInicio}, Hora de fin: ${horaFin}`;
-        horarioList.appendChild(li);
-    }
-
-    // Manejar la presentación del formulario de horario y agregar materia
     horarioForm.addEventListener('submit', (e) => {
         e.preventDefault();
         const materia = document.getElementById('materia').value.trim();
         const diaSemana = document.getElementById('dia-semana').value;
         const horaInicio = document.getElementById('hora-inicio').value;
         const horaFin = document.getElementById('hora-fin').value;
-        
 
         if (!materia || !diaSemana || !horaInicio || !horaFin) {
             alert('Por favor, complete todos los campos.');
@@ -275,11 +240,24 @@ document.addEventListener('DOMContentLoaded', () => {
         const nuevaMateria = { name: materia, diaSemana: diaSemana, horaInicio: horaInicio, horaFin: horaFin };
         storedMaterias.push(nuevaMateria);
         localStorage.setItem('materias', JSON.stringify(storedMaterias));
-
-        addMateria(materia, diaSemana, horaInicio, horaFin);
-
-        // Limpiar el formulario después de agregar la materia
-        horarioForm.reset();
-     
+        displayMaterias(storedMaterias);
     });
+
+    function displayMaterias(materias) {
+        horarioList.innerHTML = '';
+        materias.forEach((materia, index) => {
+            const li = document.createElement('li');
+            li.textContent = `${materia.name} - ${materia.diaSemana} - ${materia.horaInicio} a ${materia.horaFin}`;
+            const deleteBtn = document.createElement('button');
+            deleteBtn.textContent = 'Eliminar';
+            deleteBtn.addEventListener('click', () => {
+                storedMaterias.splice(index, 1);
+                localStorage.setItem('materias', JSON.stringify(storedMaterias));
+                displayMaterias(storedMaterias);
+            });
+            li.appendChild(deleteBtn);
+            horarioList.appendChild(li);
+            horarioForm.reset();
+        });
+    }
 });
