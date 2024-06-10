@@ -19,7 +19,6 @@
             <li><a href="#horario" class="nav-link">Horario de Materias</a></li>
         </ul>
         <button id="logout">Cerrar Sesión</button>
-        
     </nav>
 
     <div class="content">
@@ -45,7 +44,7 @@
                         <th>Descripción de la Tarea</th>
                         <th>Fecha de Entrega</th>
                         <th>Acciones</th>
-                    
+                    </tr>
                 </thead>
                 <tbody></tbody>
             </table>
@@ -104,7 +103,7 @@
             </form>
             <ul id="ideas-list"></ul>
         </div>
-        
+
         <div id="horario" class="content-section">
             <h2>Horario de Materias 📚</h2>
             <form id="horario-form">
@@ -119,7 +118,6 @@
                     <option value="miércoles">Miércoles</option>
                     <option value="jueves">Jueves</option>
                     <option value="viernes">Viernes</option>
-        
                 </select>
                 
                 <label for="hora-inicio">Hora de Inicio:</label>
@@ -129,13 +127,19 @@
                 <input type="time" id="hora-fin" name="hora-fin" required>
                 
                 <button type="submit">Agregar Materia</button>
-                
             </form>
-           
-          
             
+            <ul id="horario-list" class="horario-list">
             
-            <ul id="horario-list" class="horario-list"></ul>
+                <li>
+                    <span>Materia: Matemáticas</span>
+                    <span>Día: Lunes</span>
+                    <span>Hora: 08:00 - 09:00</span>
+                    <button class="edit-btn">Editar</button>
+                    <button class="save-btn" style="display:none;">Guardar</button>
+                    <button class="delete-btn">Eliminar</button>
+                </li>
+            </ul>
         </div>
     </div>
 
@@ -145,4 +149,3 @@
 </body>
 
 </html>
-.
