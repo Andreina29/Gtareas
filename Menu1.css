@@ -50,10 +50,10 @@ nav ul li a:hover {
     background-color: #faeaea;
 }
 
-#logoutButton {
-    display: block;
+#logout {
+    display: block; #fae0e0;
     padding: 14px 16px;
-    background-color: #221f1f;
+    background-color: ;
     color: rgb(37, 37, 37);
     border: none;
     cursor: pointer;
@@ -61,7 +61,7 @@ nav ul li a:hover {
     text-transform: uppercase;
 }
 
-#logoutButton:hover {
+#logout:hover {
     background-color: #faeaea;
 }
 
