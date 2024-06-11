@@ -20,7 +20,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const horarioForm = document.getElementById('horario-form');
     const horarioList = document.getElementById('horario-list');
 
-    const tasksPerPage = 3;
+    const tasksPerPage = 4;
     let currentPage = 1;
     let editingTask = null;
     let editingMateriaIndex = null;
@@ -289,3 +289,4 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 });
+..3
