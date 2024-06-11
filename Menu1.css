@@ -500,4 +500,5 @@ img {
 }
 .horario-btn.editar:hover{
     background-color:#f8d7da ;
+    border-radius: 10px;
 }
