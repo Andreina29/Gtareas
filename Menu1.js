@@ -23,6 +23,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const tasksPerPage = 3;
     let currentPage = 1;
     let editingTask = null;
+    let editingMateriaIndex = null;
 
     const storedTasks = JSON.parse(localStorage.getItem('tasks')) || [];
     const storedIdeas = JSON.parse(localStorage.getItem('ideas')) || [];
@@ -233,33 +234,58 @@ document.addEventListener('DOMContentLoaded', () => {
         const horaFin = document.getElementById('hora-fin').value;
 
         if (!materia || !diaSemana || !horaInicio || !horaFin) {
-            alert('Por favor, complete todos los campos.');
+            alert('Por favor, complete todos los campos del horario.');
             return;
         }
 
-        const nuevaMateria = { name: materia, diaSemana: diaSemana, horaInicio: horaInicio, horaFin: horaFin };
-        storedMaterias.push(nuevaMateria);
+        const nuevaMateria = { materia, diaSemana, horaInicio, horaFin };
+
+        if (editingMateriaIndex !== null) {
+            storedMaterias[editingMateriaIndex] = nuevaMateria;
+            editingMateriaIndex = null;
+        } else {
+            storedMaterias.push(nuevaMateria);
+        }
         localStorage.setItem('materias', JSON.stringify(storedMaterias));
+        horarioForm.reset();
         displayMaterias(storedMaterias);
     });
 
+    function addMateria(materia, diaSemana, horaInicio, horaFin) {
+        const li = document.createElement('li');
+        li.innerHTML = `
+            ${materia} - ${diaSemana} - ${horaInicio} a ${horaFin}
+            <button class="edit-btn">Editar</button>
+            <button class="delete-btn">Eliminar</button>
+        `;
+
+        const editBtn = li.querySelector('.edit-btn');
+        const deleteBtn = li.querySelector('.delete-btn');
+
+        editBtn.addEventListener('click', () => {
+            const materiaIndex = Array.from(horarioList.children).indexOf(li);
+            const materiaData = storedMaterias[materiaIndex];
+            editingMateriaIndex = materiaIndex;
+            document.getElementById('materia').value = materiaData.materia;
+            document.getElementById('dia-semana').value = materiaData.diaSemana;
+            document.getElementById('hora-inicio').value = materiaData.horaInicio;
+            document.getElementById('hora-fin').value = materiaData.horaFin;
+        });
+
+        deleteBtn.addEventListener('click', () => {
+            const materiaIndex = Array.from(horarioList.children).indexOf(li);
+            storedMaterias.splice(materiaIndex, 1);
+            localStorage.setItem('materias', JSON.stringify(storedMaterias));
+            displayMaterias(storedMaterias);
+        });
+
+        horarioList.appendChild(li);
+    }
+
     function displayMaterias(materias) {
         horarioList.innerHTML = '';
-        materias.forEach((materia, index) => {
-            const li = document.createElement('li');
-            li.textContent = `${materia.name} - ${materia.diaSemana} - ${materia.horaInicio} a ${materia.horaFin}`;
-            const deleteBtn = document.createElement('button');
-            deleteBtn.textContent = 'Eliminar';
-            deleteBtn.addEventListener('click', () => {
-                storedMaterias.splice(index, 1);
-                localStorage.setItem('materias', JSON.stringify(storedMaterias));
-                displayMaterias(storedMaterias);
-            });
-            li.appendChild(deleteBtn);
-            horarioList.appendChild(li);
-            horarioForm.reset();
+        materias.forEach(materia => {
+            addMateria(materia.materia, materia.diaSemana, materia.horaInicio, materia.horaFin);
         });
     }
 });
-
-...
