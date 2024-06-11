@@ -495,8 +495,9 @@ img {
 .horario-btn.eliminar:hover {
     background-color: #f5c6cb;
 }
-
-.horario-btn.editar--{
-    background-color: #f5c6cb;
+.horario-btn.editar{
+    background-color:  #f8d7da;
 }
-
+.horario-btn.editar:hover{
+    background-color:#f8d7da ;
+}
