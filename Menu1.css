@@ -125,7 +125,7 @@ nav ul li a:hover {
 #task-due-date {
     width: 95%;
     padding: 10px;
-    margin-bottom: 10px;
+    margin-bottom: 11px;
     border-radius: 4px;
     border: 1px solid #ccc;
     font-size: 16px;
@@ -315,7 +315,7 @@ button {
     padding: 10px;
     margin: 15px;
     background-color: rgb(247, 223, 223);
-    color: #0f0f0f;
+    color: #424242;
     border-radius: 4px;
     cursor: pointer;
     transition: all 300ms ease;
@@ -426,7 +426,7 @@ img {
 
 #horario-list li button {
     margin: 10px 30px;
-    padding: 10px 40px;
+    padding: 10px 30px;
     background-color: rgb(247, 223, 223);
     color: rgb(41, 39, 39);
     border: none;
