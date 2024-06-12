@@ -20,7 +20,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const horarioForm = document.getElementById('horario-form');
     const horarioList = document.getElementById('horario-list');
 
-    const tasksPerPage = 4;
+    const tasksPerPage = 3;
     let currentPage = 1;
     let editingTask = null;
     let editingMateriaIndex = null;
@@ -64,7 +64,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const taskDueDate = taskDueDateInput.value;
 
         if (!taskName || !taskDesc || !taskDueDate) {
-            alert('Por favor, complete todos los campos.');
+            alert('Por favor, complete todos los campos...');
             return;
         }
 
@@ -101,7 +101,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const editBtn = tr.querySelector('.edit-btn');
         const deleteBtn = tr.querySelector('.delete-btn');
 
-        editBtn.addEventListener('click', () => {
+        editBtn.addEventListener('click', () =>{
             const taskIndex = Array.from(taskList.children).indexOf(tr);
             const task = storedTasks[taskIndex];
             editingTask = tr;
@@ -192,7 +192,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const imageUploadInput = document.getElementById('image-upload');
         const file = imageUploadInput.files[0];
         if (!file) {
-            alert('Por favor, seleccione una imagen.');
+            alert('Por favor, seleccione una imagen...');
             return;
         }
         const reader = new FileReader();
@@ -234,7 +234,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const horaFin = document.getElementById('hora-fin').value;
 
         if (!materia || !diaSemana || !horaInicio || !horaFin) {
-            alert('Por favor, complete todos los campos del horario.');
+            alert('Por favor, complete todos los campos del horario...');
             return;
         }
 
@@ -282,11 +282,9 @@ document.addEventListener('DOMContentLoaded', () => {
         horarioList.appendChild(li);
     }
 
-    function displayMaterias(materias) {
-        horarioList.innerHTML = '';
-        materias.forEach(materia => {
-            addMateria(materia.materia, materia.diaSemana, materia.horaInicio, materia.horaFin);
+    function displayMaterias(materias){
+        horarioList.innerHTML='';
+        materias.forEach(materia =>{
+            addMateria(materia.materia,materia.diaSemana,materia.horaInicio,materia.horaFin);
         });
     }
-});
-..3
