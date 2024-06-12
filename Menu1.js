@@ -20,7 +20,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const horarioForm = document.getElementById('horario-form');
     const horarioList = document.getElementById('horario-list');
 
-    const tasksPerPage = 3;
+    const tasksPerPage = 2;
     let currentPage = 1;
     let editingTask = null;
     let editingMateriaIndex = null;
@@ -242,7 +242,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (editingMateriaIndex !== null) {
             storedMaterias[editingMateriaIndex] = nuevaMateria;
-            editingMateriaIndex = null;
+            editingMateriaIndex = ;
         } else {
             storedMaterias.push(nuevaMateria);
         }
