@@ -2,7 +2,7 @@ body {
     margin: 0;
     padding: 0;
     font-family: Georgia, 'Times New Roman', Times, serif;
-    background-image: linear-gradient(#f3f1f180, #00000080), url('https://www.wimi-teamwork.com/static/medias/logiciels-gestion-des-taches-1280x640-1-980x490.png');
+    background-image: linear-gradient(#f3f1f180, #00000080), url('https://media.istockphoto.com/id/1222829850/es/vector/hombre-con-marcador-haciendo-lista-de-verificaci%C3%B3n.jpg?s=612x612&w=0&k=20&c=JvS8ByXM7QB3vnSBuP-kDKANWZ4gUfRgS3pOtwyzwOo=');
     background-size: cover;
     background-position: center;
     display: flex;
@@ -18,7 +18,7 @@ body {
 }
 header {
     text-align: center;
-    color: #050505;
+    color: #f3eaea;
     position: relative;
     z-index: 1;
 }
@@ -42,7 +42,7 @@ h1 {
     background: rgba(255, 255, 255, 0.8);
     padding: 20px;
     border-radius: 10px;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 0 20px rgba(247, 242, 242, 0.3);
     max-width: 600px;
     text-align: center;
 }
@@ -84,7 +84,7 @@ input[type="text"] {
 
 button {
     padding: 10px 20px;
-    background-color: #007bff;
+    background-color: #3a94f5;
     color: #eee;
     border: none;
     border-radius: 5px;
@@ -101,7 +101,7 @@ button:hover {
 }
 
 .register-link a {
-    color: #007bff;
+    color: #f2f5f8;
     text-decoration: none;
 }
 
