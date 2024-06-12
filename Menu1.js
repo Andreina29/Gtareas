@@ -242,7 +242,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (editingMateriaIndex !== null) {
             storedMaterias[editingMateriaIndex] = nuevaMateria;
-            editingMateriaIndex = ;
+            editingMateriaIndex = null;
         } else {
             storedMaterias.push(nuevaMateria);
         }
