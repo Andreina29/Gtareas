@@ -304,23 +304,6 @@ document.addEventListener('DOMContentLoaded', () => {
        
         showNotification('Tarea agregada exitosamente');
     });
-    function scheduleNotification(materia) {
-        const now = new Date();
-        const diaSemana = ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'].indexOf(materia.diaSemana);
-        const [horaInicio, minutoInicio] = materia.horaInicio.split(':').map(Number);
-
-        let nextNotificationTime = new Date(now.getFullYear(), now.getMonth(), now.getDate(), horaInicio, minutoInicio);
-        while (nextNotificationTime.getDay() !== diaSemana) {
-            nextNotificationTime.setDate(nextNotificationTime.getDate() + 1);
-        }
-
-        const timeUntilNotification = nextNotificationTime - now;
-        if (timeUntilNotification > 0) {
-            setTimeout(() => {
-                new Notification(`Recordatorio: ${materia.materia} empieza ahora!`);
-            }, timeUntilNotification);
-        }
-    }
 
     
 });
