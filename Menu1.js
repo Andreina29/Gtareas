@@ -240,13 +240,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const nuevaMateria = { materia, diaSemana, horaInicio, horaFin };
 
-         if (editingMateriaIndex !== null) {
+        if (editingMateriaIndex !== null) {
             storedMaterias[editingMateriaIndex] = nuevaMateria;
             editingMateriaIndex = null;
-        }  else {
+        } else {
             storedMaterias.push(nuevaMateria);
         }
-        
         localStorage.setItem('materias', JSON.stringify(storedMaterias));
         horarioForm.reset();
         displayMaterias(storedMaterias);
@@ -308,3 +307,5 @@ document.addEventListener('DOMContentLoaded', () => {
 
     
 });
+
+3
