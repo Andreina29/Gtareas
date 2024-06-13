@@ -20,7 +20,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const horarioForm = document.getElementById('horario-form');
     const horarioList = document.getElementById('horario-list');
 
-    const tasksPerPage = 2;
+    const tasksPerPage = 3;
     let currentPage = 1;
     let editingTask = null;
     let editingMateriaIndex = null;
@@ -288,3 +288,39 @@ document.addEventListener('DOMContentLoaded', () => {
             addMateria(materia.materia,materia.diaSemana,materia.horaInicio,materia.horaFin);
         });
     }
+    function showNotification(message) {
+        const notification = document.createElement('div');
+        notification.className = 'notification';
+        notification.innerText = message;
+        document.body.appendChild(notification);
+        setTimeout(() => notification.classList.add('show'), 10);
+        setTimeout(() => {
+            notification.classList.remove('show');
+            setTimeout(() => notification.remove(), 500);
+        }, 3000);
+    }
+    
+    saveTaskBtn.addEventListener('click', () => {
+       
+        showNotification('Tarea agregada exitosamente');
+    });
+    function scheduleNotification(materia) {
+        const now = new Date();
+        const diaSemana = ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'].indexOf(materia.diaSemana);
+        const [horaInicio, minutoInicio] = materia.horaInicio.split(':').map(Number);
+
+        let nextNotificationTime = new Date(now.getFullYear(), now.getMonth(), now.getDate(), horaInicio, minutoInicio);
+        while (nextNotificationTime.getDay() !== diaSemana) {
+            nextNotificationTime.setDate(nextNotificationTime.getDate() + 1);
+        }
+
+        const timeUntilNotification = nextNotificationTime - now;
+        if (timeUntilNotification > 0) {
+            setTimeout(() => {
+                new Notification(`Recordatorio: ${materia.materia} empieza ahora!`);
+            }, timeUntilNotification);
+        }
+    }
+
+    
+});
